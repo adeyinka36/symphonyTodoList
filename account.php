@@ -1,7 +1,7 @@
 <?php
 require_once 'inc/bootstrap.php';
 
-$creator= $session->get("auth-userid");
+$creator=revealCookie("auth-userid");
 
 if(!$creator){
     redirect('login.php');

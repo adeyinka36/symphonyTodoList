@@ -69,11 +69,72 @@ function storeDetails($signedInUser){
 
     global $session;
 
-    $session->set("auth-userid",(int) $signedInUser["id"]);
-    $session->set("username", $signedInUser["username"]);
+    // $session->set("auth-userid",(int) $signedInUser["id"]);
+    // $session->set("username", $signedInUser["username"]);
+
+
+    $jwt= Firebase\JWT\JWT::encode([
+        "iss"=>request()->getBaseUrl(),
+        "sub"=>$signedInUser['id'],
+        "exp"=>$time,
+        "iat"=>time(),
+        "nbf"=>time(),
+        "username"=>$signedInUser['username']
+    ],
+    getenv("SECRET"),
+    "HS256");
+    $expire = time()+3600;
+    
+    $cookie= setAuthCookie(jwt,$expire);
+
+   
+    
+
+    $session->getFlashBag()->add("success","Successfully logged-in");
+
+   return  redirect("../index.php",["cookies"=>[$cookie]]);
 }
 
+function setAuthCookie($data,$exp){
+     
+    $cookies= new Symfony\Component\HttpFoundation\Cookie(
+        "auth",
+        $data,
+        $exp,
+        "/",
+        "localhost",
+        false,
+        true
+    );
 
+    return $cookies;
+}
+
+function revealCookie($prop=null){
+    
+    Firebase\JWT\JWT::$leeway=1;
+    try{
+    $cookies= Firebase\JWT\JWT::decode(
+    request()->cookies->get("auth"),
+     getenv("SECRET"),
+    ["HS256"]
+    );
+}catch(Exception $e){
+    echo $e->getMessage();
+    return false;
+  
+}
+    if($prop=="auth-userid"){
+        $prop=$sub;
+    }
+    if($prop==null){
+    return $cookies;
+    }
+    if(!isset($cookies->$prop)){
+        return false;
+    }
+    return $cookies->$prop;
+}
 
 function changePassword($currentPassword,$newPassword,$username){
     global $session;

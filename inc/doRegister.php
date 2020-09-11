@@ -22,6 +22,5 @@ registerUser($username,$password);
 
 $newUser=findUserByUsername($username);
 storeDetails($newUser);
-$session->getFlashBag()->add("success","New user sucessfully created");
-return redirect('../index.php');
+
 

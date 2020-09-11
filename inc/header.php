@@ -1,6 +1,6 @@
 <?php
 require_once 'bootstrap.php';
-$creator= $session->get("auth-userid");
+$creator= revealCookie("auth-userid");
 ?>
 
 <html>

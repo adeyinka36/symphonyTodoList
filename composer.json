@@ -1,5 +1,7 @@
 {
     "require": {
-        "symfony/http-foundation": "^4.2"
+        "symfony/http-foundation": "^4.2",
+        "firebase/php-jwt": "^5.2",
+        "vlucas/phpdotenv": "^2.4"
     }
 }

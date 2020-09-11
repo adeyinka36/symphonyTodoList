@@ -21,5 +21,4 @@ storeDetails($user);
 
 
 
-$session->getFlashBag()->add("success","Successfully logged-in");
-return redirect('../index.php');
+
