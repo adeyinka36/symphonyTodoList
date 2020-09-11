@@ -85,7 +85,7 @@ function storeDetails($signedInUser){
     "HS256");
     $expire = time()+3600;
     
-    $cookie= setAuthCookie(jwt,$expire);
+    $cookie= setAuthCookie($jwt,$expire);
 
    
     
@@ -116,7 +116,7 @@ function revealCookie($prop=null){
     try{
     $cookies= Firebase\JWT\JWT::decode(
     request()->cookies->get("auth"),
-     getenv("SECRET"),
+    getenv("SECRET"),
     ["HS256"]
     );
 }catch(Exception $e){
@@ -125,7 +125,7 @@ function revealCookie($prop=null){
   
 }
     if($prop=="auth-userid"){
-        $prop=$sub;
+        $prop="sub";
     }
     if($prop==null){
     return $cookies;
