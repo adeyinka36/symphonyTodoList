@@ -8,7 +8,7 @@ function getTasks($where = null)
     global $session;
     global $db;
 
-    $creator=reavealCookie("auth-userid");
+    $creator=revealCookie("auth-userid");
     if($creator){
         
         $creatorsTasks=[];
@@ -79,7 +79,7 @@ function createTask($data)
     global $session;
 
     try {
-        $user_id=$revealCookie("auth-userid");
+        $user_id=revealCookie("auth-userid");
         $statement = $db->prepare('INSERT INTO tasks (task, status, user_id) VALUES (:task, :status, :user_id)');
         $statement->bindParam('task', $data['task']);
         $statement->bindParam('status', $data['status']);
