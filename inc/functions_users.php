@@ -72,18 +72,18 @@ function storeDetails($signedInUser){
     // $session->set("auth-userid",(int) $signedInUser["id"]);
     // $session->set("username", $signedInUser["username"]);
 
-
+    $expire = time()+3600;
     $jwt= Firebase\JWT\JWT::encode([
         "iss"=>request()->getBaseUrl(),
         "sub"=>$signedInUser['id'],
-        "exp"=>$time,
+        "exp"=>$expire,
         "iat"=>time(),
         "nbf"=>time(),
         "username"=>$signedInUser['username']
     ],
     getenv("SECRET"),
     "HS256");
-    $expire = time()+3600;
+   
     
     $cookie= setAuthCookie($jwt,$expire);
 
