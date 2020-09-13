@@ -66,8 +66,9 @@ $creator= revealCookie("auth-userid");
         <li class="nav-item task<?php if ($page == "task") { echo " on"; } ?>"><a class="nav-link" href="task.php">Add Tasks</a></li>
       </ul>
         <ul class="nav">
+        <?php if($creator){?>
             <li class="nav-item task<?php if ($page == "account") { echo " on"; } ?>"><a class="nav-link" href="./account.php">My Account</a></li>
-            <?php if($creator){?>
+           
             <li class="nav-item tasks"><a class="nav-link" href="inc/doLogout.php">Logout</a></li>
             <?php }?>
             <?php if(!$creator){ ?>
