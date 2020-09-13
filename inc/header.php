@@ -1,7 +1,4 @@
-<?php
-require_once 'bootstrap.php';
-$creator= revealCookie("auth-userid");
-?>
+
 
 <html>
 <head>
@@ -49,7 +46,14 @@ $creator= revealCookie("auth-userid");
   </svg>
 
 	<header class="header">
+
     <div class="col-container">
+    <span style="visibility:hidden";>
+    <?php
+require_once 'bootstrap.php';
+$creator= revealCookie("auth-userid");
+?>
+</span>
   		<h1>
         <a class="logo" href="./">
           <svg viewbox="0 0 64 64" class="logo-icon"><use xlink:href="#logo_icon"></use></svg>
