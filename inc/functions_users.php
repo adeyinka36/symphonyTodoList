@@ -127,6 +127,7 @@ function revealCookie($prop=null){
     if($prop=="auth-userid"){
         $prop="sub";
     }
+   
     if($prop==null){
     return $cookies;
     }
@@ -134,6 +135,8 @@ function revealCookie($prop=null){
         return false;
     }
     return $cookies->$prop;
+
+    
 }
 
 function changePassword($currentPassword,$newPassword,$username){

@@ -31,12 +31,22 @@ include 'inc/header.php';
               Add Task
             </a>
           </li>
+
+         <span style="display:none;">
+          <?php
+           $creator=revealCookie('auth-userid');
+          
+          if(!$creator){ ?>
+          </span>
           <li class="actions-item">
             <a class="actions-link" href="register.php">
               <span class="actions-icon">
                 <svg viewbox="0 0 64 64"><use xlink:href="#user_icon"></use></svg>
               </span>
                 Register
+                </a>
+                </li>
+          <?php } ?>
 		</div>
 
 <?php include("inc/footer.php"); ?>
