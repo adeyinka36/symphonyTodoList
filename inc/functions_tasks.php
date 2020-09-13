@@ -9,6 +9,7 @@ function getTasks($where = null)
     global $db;
 
     $creator=revealCookie("auth-userid");
+    
     if($creator){
         
         $creatorsTasks=[];
@@ -25,13 +26,15 @@ function getTasks($where = null)
         die();
     }
     foreach($tasks as $t){
-        if($t["id"]==$creator){
+        if($t["user_id"]==$creator){
             
             array_push($creatorsTasks,$t);
         }
 
     }
+  
     return $creatorsTasks;
+
     
     }
 

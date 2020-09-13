@@ -3,8 +3,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/functions_tasks.php';
 require_once __DIR__ . '/functions_users.php';
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv = \Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
+
 
 
 try {

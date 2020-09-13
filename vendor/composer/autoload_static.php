@@ -29,6 +29,10 @@ class ComposerStaticInit0e0aa83c3cfcf773a712c3553693afed
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\HttpFoundation\\' => 33,
         ),
+        'P' => 
+        array (
+            'PhpOption\\' => 10,
+        ),
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
@@ -75,6 +79,10 @@ class ComposerStaticInit0e0aa83c3cfcf773a712c3553693afed
         'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
+        ),
+        'PhpOption\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
         'Firebase\\JWT\\' => 
         array (
